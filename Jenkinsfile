@@ -15,16 +15,12 @@ pipeline {
         stage('Build Docker Image'){
             agent any
         steps{
-            sh 'pwd'
-            sh 'ls -la webapp/target/webapp.war'
-            sh 'docker build -t sample-image .'
+            sh 'docker build -t tomcat .'
+            docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
+            dockerImage.push('tomcat')
+
         }
         }
-        stage('Docker Image Copy'){
-        steps{
-            sh 'echo Docker Image Copy'
-            //comment
-        }
-        }
+
     }
 }
