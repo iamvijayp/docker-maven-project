@@ -16,7 +16,7 @@ pipeline {
             agent any
         steps{
             script{
-            docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
+            docker.withRegistry('https://hub.docker.com', 'docker-cred') {
             docker.build('myapp').push('latest')
         }
         }
