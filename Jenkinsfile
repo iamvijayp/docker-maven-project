@@ -16,8 +16,9 @@ pipeline {
             agent any
         steps{
             script{
-            docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
-            docker.build('myapp').push()
+            def dockerImage = docker.image('myapp')
+            docker.withRegistry('https://index.docker.io/v1/', "docker-cred") {
+                dockerImage.push()
         }
         }
         }
