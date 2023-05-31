@@ -14,6 +14,7 @@ pipeline {
         }
         stage('Test')
         {
+            agent any
             steps{
                 sh '''ls -lrt
                 pwd
