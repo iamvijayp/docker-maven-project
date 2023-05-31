@@ -16,11 +16,11 @@ pipeline {
             agent any
         steps{
             script{
-            docker.withRegistry('https://hub.docker.com', 'docker-cred') {
+            docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
             docker.build('myapp').push('latest')
         }
         }
         }
         }
     }
-}
+}.
