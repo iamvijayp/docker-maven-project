@@ -17,7 +17,7 @@ pipeline {
         steps{
             script{
             docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
-            docker.build('iamvijayp/myapp').push()
+            docker.build('iamvijayp/myapp:${BUILD_NUMBER}').push()
         }
         }
         }
