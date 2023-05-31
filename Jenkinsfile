@@ -3,10 +3,9 @@ pipeline {
     stages {
         stage('Maven Build') {
             agent {
-            docker { 
-                image 'maven:3.9.0-eclipse-temurin-11'
-            // args '-v $HOME/.m2:/root/.m2'
-            }
+                docker { 
+                    image 'maven:3.9.0-eclipse-temurin-11'
+                }
             }
             steps {
             sh 'mvn -B -DskipTests clean package' //this command will be executed inside maven container
@@ -21,11 +20,11 @@ pipeline {
                 '''
             }
         }
-        stage('Build Docker Image'){
+        stage('Build And Push Docker Image'){
             agent any
         steps{
             script{
-            docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
+            docker.withRegistry('https://hub.docker.com/', 'docker-cred') {
             docker.build("iamvijayp/myapp" +":$BUILD_NUMBER").push()
         }
         }
