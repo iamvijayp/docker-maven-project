@@ -12,15 +12,23 @@ pipeline {
             sh 'mvn -B -DskipTests clean package' //this command will be executed inside maven container
             }
         }
-        stage('Build Docker Image'){
-            agent any
-        steps{
-            script{
-            docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
-            docker.build('iamvijayp/myapp:${BUILD_NUMBER}').push()
+        stage('Test')
+        {
+            steps{
+                sh '''ls -lrt
+                pwd
+                '''
+            }
         }
-        }
-        }
-        }
+        // stage('Build Docker Image'){
+        //     agent any
+        // steps{
+        //     script{
+        //     docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
+        //     docker.build('iamvijayp/myapp:${BUILD_NUMBER}').push()
+        // }
+        // }
+        // }
+        // }
     }
 }
