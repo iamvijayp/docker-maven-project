@@ -17,7 +17,8 @@ pipeline {
         steps{
             script{
             docker.withRegistry('https://index.docker.io/v1/', 'docker-cred') {
-            docker.build('myapp').push('latest')
+            docker.build('myapp')
+            docker.push('myapp')
         }
         }
         }
