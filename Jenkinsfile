@@ -14,7 +14,12 @@ pipeline {
         }
         stage('Build Docker Image'){
         steps{
-            sh 'echo hello'
+            sh 'echo Build Docker Image'
+        }
+        }
+        stage('Docker Image Copy'){
+        steps{
+            sh 'echo Docker Image Copy'
         }
         }
     }
