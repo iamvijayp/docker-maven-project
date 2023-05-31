@@ -13,19 +13,18 @@ pipeline {
             }
         }
         stage('Build Docker Image'){
-            agent {
-            docker { image 'alpine'}
-            }
+            agent any
         steps{
             sh 'pwd'
             sh 'ls -la webapp/target/webapp.war'
+            sh 'docker build -t sample-image .'
         }
         }
-        // stage('Docker Image Copy'){
-        // steps{
-        //     sh 'echo Docker Image Copy'
-        //     //comment
-        // }
-        // }
+        stage('Docker Image Copy'){
+        steps{
+            sh 'echo Docker Image Copy'
+            //comment
+        }
+        }
     }
 }
