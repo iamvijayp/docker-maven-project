@@ -17,8 +17,8 @@ pipeline {
             docker { image 'alpine'}
             }
         steps{
-            sh 'echo Build Docker Image'
-            sh 'ls -lrt'
+            sh 'pwd'
+            sh 'ls -la webapp/target/webapp.war'
         }
         }
         // stage('Docker Image Copy'){
