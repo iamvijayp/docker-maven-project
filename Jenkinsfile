@@ -12,9 +12,10 @@ pipeline {
             sh 'mvn -B -DskipTests clean package' //this command will be executed inside maven container
             }
         }
-        stage('Build Docker Image')
+        stage('Build Docker Image'){
         steps{
             sh 'echo hello'
+        }
         }
     }
 }
