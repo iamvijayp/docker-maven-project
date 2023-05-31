@@ -20,6 +20,7 @@ pipeline {
         stage('Docker Image Copy'){
         steps{
             sh 'echo Docker Image Copy'
+            //comment
         }
         }
     }
