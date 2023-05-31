@@ -13,15 +13,19 @@ pipeline {
             }
         }
         stage('Build Docker Image'){
+            agent {
+            docker { image 'alpine'}
+            }
         steps{
             sh 'echo Build Docker Image'
+            sh 'ls -lrt'
         }
         }
-        stage('Docker Image Copy'){
-        steps{
-            sh 'echo Docker Image Copy'
-            //comment
-        }
-        }
+        // stage('Docker Image Copy'){
+        // steps{
+        //     sh 'echo Docker Image Copy'
+        //     //comment
+        // }
+        // }
     }
 }
