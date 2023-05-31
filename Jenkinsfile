@@ -18,9 +18,8 @@ pipeline {
             sh 'docker build -t tomcat .'
             docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
             dockerImage.push('tomcat')
-
         }
         }
-
+        }
     }
 }
