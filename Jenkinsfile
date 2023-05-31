@@ -16,8 +16,10 @@ pipeline {
             agent any
         steps{
             sh 'docker build -t tomcat .'
+            script{
             docker.withRegistry('https://registry.hub.docker.com', 'docker-cred') {
             dockerImage.push('tomcat')
+        }
         }
         }
         }
